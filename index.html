@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For Lauren — Your Doula App (a first look)</title>
+<meta name="description" content="A first-look concept for Lauren's doula app — built with love by Chris & The 730 Company.">
+<meta property="og:title" content="For Lauren — Your Doula App 🤎">
+<meta property="og:description" content="A first look. Pick the name, answer one question, text Chris back.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16110D; --ink-2:#1F1813; --ink-3:#2A211A;
+  --gold:#C9A24B; --gold-lt:#E7C988; --champ:#EBD7B0;
+  --mahogany:#6E3B2C; --terra:#BC6A44; --clay:#A8674E;
+  --cream:#F7EFE2; --cream-2:#FBF6EC; --paper:#FFFCF6;
+  --rose:#CC7E8A; --rose-dp:#A85B68; --plum:#5C3A5A;
+  --txt-d:#2A201A; --muted-d:#7A6A5C;
+  --txt-l:#F3E9DA; --muted-l:rgba(243,233,218,.62);
+  --line-l:rgba(110,59,44,.14); --line-d:rgba(235,215,176,.14);
+  --ok:#5E8B6A;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  font-family:'Outfit',system-ui,sans-serif;
+  background:
+    radial-gradient(1200px 700px at 80% -10%, rgba(110,59,44,.45), transparent 60%),
+    radial-gradient(900px 600px at 0% 110%, rgba(92,58,90,.35), transparent 60%),
+    linear-gradient(160deg,#120E0A,#1C150F 55%,#160F0B);
+  color:var(--txt-l);
+  -webkit-font-smoothing:antialiased;
+  padding:0 0 60px;
+}
+.serif{font-family:'Fraunces',Georgia,serif}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+
+.glitter{position:relative}
+.glitter::after{
+  content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background-image:
+    radial-gradient(1.4px 1.4px at 12% 22%, rgba(255,248,230,.9), transparent 60%),
+    radial-gradient(1px 1px at 28% 64%, rgba(235,215,176,.7), transparent 60%),
+    radial-gradient(1.6px 1.6px at 52% 18%, rgba(255,255,255,.8), transparent 60%),
+    radial-gradient(1px 1px at 68% 48%, rgba(235,215,176,.6), transparent 60%),
+    radial-gradient(1.3px 1.3px at 82% 76%, rgba(255,248,230,.8), transparent 60%),
+    radial-gradient(1px 1px at 90% 30%, rgba(235,215,176,.55), transparent 60%),
+    radial-gradient(1px 1px at 40% 88%, rgba(255,255,255,.55), transparent 60%);
+  opacity:.55;
+}
+
+/* note from chris */
+.note{
+  background:linear-gradient(120deg, rgba(204,126,138,.16), rgba(201,162,75,.12));
+  border:1px solid var(--line-d);border-left:3px solid var(--gold);
+  border-radius:16px;padding:22px 24px;margin:26px auto 0;max-width:760px;
+}
+.note h4{margin:0 0 10px;font:600 12px/1 'Outfit';letter-spacing:.22em;color:var(--gold-lt);text-transform:uppercase}
+.note p{margin:0 0 12px;font-size:15.5px;color:#F0E4D2;line-height:1.7}
+.note p:last-child{margin-bottom:0}
+.note b{color:var(--cream-2);font-weight:600}
+.note .sig{font-family:'Fraunces';font-style:italic;color:var(--champ);font-size:17px}
+
+.hero{padding:46px 0 12px;text-align:center}
+.mark{width:74px;height:74px;margin:0 auto 18px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #F4DFAd, var(--gold) 55%, #8A6A2A);
+  position:relative;box-shadow:0 0 0 1px rgba(235,215,176,.4),0 18px 40px -16px rgba(201,162,75,.7)}
+.mark::before{content:"";position:absolute;inset:13px;border-radius:50%;
+  background:var(--ink);box-shadow:inset 0 0 0 1px rgba(235,215,176,.25)}
+.mark::after{content:"";position:absolute;width:34px;height:34px;left:26px;top:18px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #F4DFAd, var(--gold) 60%, #8A6A2A)}
+.wordmark{font-family:'Fraunces';font-weight:600;font-size:clamp(44px,8vw,82px);line-height:.95;letter-spacing:.01em;
+  background:linear-gradient(100deg,#B98E36,#EBD7B0 35%,#FFF7E6 50%,#EBD7B0 65%,#B98E36);
+  background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shimmer 7s linear infinite}
+@keyframes shimmer{to{background-position:220% center}}
+.tag{font-family:'Fraunces';font-style:italic;font-weight:400;font-size:clamp(18px,2.6vw,24px);color:var(--champ);margin:10px 0 4px}
+.sub{max-width:620px;margin:14px auto 0;color:var(--muted-l);font-size:15.5px;line-height:1.6}
+.pill-note{display:inline-flex;gap:8px;align-items:center;margin-top:22px;font-size:12.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold-lt);border:1px solid var(--line-d);border-radius:30px;padding:8px 16px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(94,139,106,.7);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 7px rgba(94,139,106,0)}100%{box-shadow:0 0 0 0 rgba(94,139,106,0)}}
+
+.rationale{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:42px 0 8px}
+.rcard{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+  border:1px solid var(--line-d);border-radius:16px;padding:20px}
+.rcard h5{margin:0 0 12px;font:600 11px/1 'Outfit';letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lt)}
+.swatches{display:flex;gap:9px;flex-wrap:wrap}
+.sw{width:38px;height:38px;border-radius:10px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.sw span{display:block;font-size:8px;text-align:center;margin-top:42px;color:var(--muted-l);white-space:nowrap}
+.type-spec .big{font-family:'Fraunces';font-size:30px;color:var(--cream-2);line-height:1}
+.type-spec .small{font-family:'Outfit';font-size:14px;color:var(--muted-l);margin-top:8px;letter-spacing:.01em}
+.rcard p{margin:0;color:var(--muted-l);font-size:13.5px;line-height:1.6}
+.rcard p b{color:var(--cream-2);font-weight:500}
+
+.slabel{display:flex;align-items:center;gap:16px;margin:54px 0 26px}
+.slabel h2{font-family:'Fraunces';font-weight:500;font-size:26px;color:var(--cream-2);margin:0;white-space:nowrap}
+.slabel .ln{height:1px;flex:1;background:var(--line-d)}
+.slabel .tagm{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-lt)}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:42px 26px;justify-items:center}
+.unit{width:300px}
+.cap{text-align:center;margin-top:16px}
+.cap b{font-family:'Fraunces';font-size:18px;color:var(--cream-2);font-weight:500}
+.cap p{margin:5px 0 0;font-size:12.5px;color:var(--muted-l);line-height:1.5}
+
+.phone{width:300px;background:#0C0A08;border-radius:44px;padding:9px;
+  box-shadow:0 40px 70px -28px rgba(0,0,0,.7), inset 0 0 0 2px rgba(235,215,176,.13), 0 0 0 1px rgba(0,0,0,.4)}
+.screen{border-radius:36px;overflow:hidden;height:628px;position:relative;display:flex;flex-direction:column}
+.screen.light{background:var(--cream-2);color:var(--txt-d)}
+.screen.dark{background:linear-gradient(170deg,#1A130E,#241A12);color:var(--txt-l)}
+.scroll{overflow-y:auto;flex:1;scrollbar-width:none}
+.scroll::-webkit-scrollbar{display:none}
+.notch{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:96px;height:7px;border-radius:6px;background:rgba(0,0,0,.55);z-index:5}
+.sbar{display:flex;justify-content:space-between;align-items:center;padding:13px 22px 6px;font-size:11.5px;font-weight:600;opacity:.8}
+.sbar .r{display:flex;gap:6px;align-items:center;font-size:10px}
+
+.padx{padding-left:20px;padding-right:20px}
+.h-serif{font-family:'Fraunces';font-weight:500}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:30px;font:600 14px 'Outfit';padding:14px;cursor:default}
+.btn-gold{background:linear-gradient(100deg,var(--gold),var(--gold-lt));color:#2A1C06;box-shadow:0 12px 24px -10px rgba(201,162,75,.7)}
+.btn-out{border:1px solid var(--line-d);color:var(--champ)}
+.btn-dark{background:var(--ink);color:var(--champ)}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:30px;padding:8px 13px;font-size:12px;font-weight:500;white-space:nowrap}
+.chip-l{background:#fff;border:1px solid var(--line-l);color:var(--mahogany)}
+.chip-on{background:var(--mahogany);color:var(--cream-2);border:1px solid var(--mahogany)}
+.chip-soft{background:rgba(110,59,44,.08);color:var(--mahogany)}
+.av{border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces';color:#fff5e6;font-weight:600;flex:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.a1{background:linear-gradient(140deg,#7A4133,#B6633F)}
+.a2{background:linear-gradient(140deg,#5C3A5A,#A85B68)}
+.a3{background:linear-gradient(140deg,#6E3B2C,#A8674E)}
+.a4{background:linear-gradient(140deg,#8A4A38,#CC7E8A)}
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;background:rgba(201,162,75,.14);color:#8A6A2A;border:1px solid rgba(201,162,75,.35);border-radius:8px;padding:5px 9px}
+.badge svg{width:11px;height:11px}
+.star{color:var(--gold);font-size:12px}
+.card{background:#fff;border:1px solid var(--line-l);border-radius:18px;box-shadow:0 14px 30px -22px rgba(110,59,44,.5)}
+.muted{color:var(--muted-d)}
+.tiny{font-size:11px}
+
+/* decision */
+.decide{max-width:820px;margin:64px auto 0;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
+  border:1px solid var(--line-d);border-radius:20px;padding:30px 28px}
+.decide h3{font-family:'Fraunces';font-weight:500;font-size:26px;color:var(--cream-2);margin:0}
+.decide .lead{color:var(--muted-l);font-size:14.5px;line-height:1.6;margin:8px 0 22px}
+.qlabel{font:600 11px/1 'Outfit';letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lt);margin:22px 0 12px}
+.opt{display:flex;gap:13px;align-items:flex-start;background:rgba(255,255,255,.04);border:1px solid var(--line-d);border-radius:14px;padding:14px 16px;margin-bottom:10px}
+.opt .k{font-family:'Fraunces';font-weight:600;color:#2A1C06;background:linear-gradient(120deg,var(--gold),var(--gold-lt));width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;font-size:15px}
+.opt b{color:var(--cream-2);font-size:15px}
+.opt p{margin:3px 0 0;color:var(--muted-l);font-size:13px;line-height:1.55}
+.cta{margin-top:24px;text-align:center}
+.cta .big{font-family:'Fraunces';font-size:18px;color:var(--champ)}
+.cta .ex{display:inline-block;margin-top:10px;border:1px dashed rgba(235,215,176,.4);border-radius:30px;padding:10px 18px;color:var(--gold-lt);font-size:14px}
+
+.foot{margin-top:50px;text-align:center;color:var(--muted-l);font-size:13px;line-height:1.7}
+.clock{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;border:1px solid var(--line-d);margin-bottom:10px;position:relative}
+.clock i{position:absolute;background:var(--gold-lt);border-radius:2px}
+.clock .hh{width:2px;height:8px;top:8px;left:13.5px;transform-origin:bottom center;transform:rotate(-135deg)}
+.clock .mm{width:2px;height:10px;top:14px;left:13.5px}
+@media(max-width:680px){.rationale{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="note">
+  <h4>A note from Chris 🤎</h4>
+  <p>Lauren — I had this built for you. This is a first look at a <b>doula app</b> I want to make for you: a place where a pregnant woman can find her doula, see her qualifications, message her, and book appointments — and where you, the doula, upload your credentials and take care of your people right back.</p>
+  <p>Here's how I described you to the team, basically word for word: <b>earthy, grounded, spiritual — but bright and vibrant too. Professional and elegant. Glittery.</b> You love <b>modern black elegance.</b> This is a world full of beautiful Black women — our queens — and I wanted it to honor that <b>without overdoing it.</b> You're the woman who gets all the way dressed up just to go to the <b>airport</b>, and then wears the same <b>night-shorts</b> to bed every single night — grace and presentation, but practical as hell. We designed the whole thing around that balance.</p>
+  <p>Also, and this is important: you are still a <b>butt nugget</b>. 💅</p>
+  <p>Take a scroll through it, then <b>pick the name</b> and answer the <b>one question</b> at the very bottom, and text me your choices. Love you. <span class="sig">— Chris</span></p>
+</div>
+
+<div class="wrap">
+
+  <div class="hero glitter">
+    <div class="mark"></div>
+    <div class="wordmark serif">Mahogany</div>
+    <div class="tag serif">Find your doula. Honor your journey.</div>
+    <p class="sub">A warm, trusted portal connecting expecting families with the doulas who'll walk beside them — through the search, the conversations, the appointments, and the birth. Rooted in continuous, compassionate care.</p>
+    <div class="pill-note"><span class="dot"></span> First-look concept · the name "Mahogany" is just a placeholder — you choose</div>
+  </div>
+
+  <div class="rationale">
+    <div class="rcard">
+      <h5>The palette</h5>
+      <div class="swatches">
+        <div class="sw" style="background:#16110D"><span>warm black</span></div>
+        <div class="sw" style="background:linear-gradient(135deg,#C9A24B,#E7C988)"><span>champagne gold</span></div>
+        <div class="sw" style="background:#6E3B2C"><span>mahogany</span></div>
+        <div class="sw" style="background:#BC6A44"><span>terracotta</span></div>
+        <div class="sw" style="background:#CC7E8A"><span>dusty rose</span></div>
+        <div class="sw" style="background:#5C3A5A"><span>plum</span></div>
+        <div class="sw" style="background:#F7EFE2"><span>cream</span></div>
+      </div>
+    </div>
+    <div class="rcard type-spec">
+      <h5>The type</h5>
+      <div class="big serif">Fraunces — grace</div>
+      <div class="small">Outfit — practicality</div>
+      <p style="margin-top:12px">An elegant display serif (the airport outfit) over a clean, friendly everyday font (the night-shorts). Grace meets function, literally in the pairing.</p>
+    </div>
+    <div class="rcard">
+      <h5>The feeling</h5>
+      <p><b>Earthy &amp; grounded</b> in warm browns and clay. <b>Spiritual</b> in the plum &amp; the room for ritual. <b>Glittery, elegant black luxe</b> in gold-on-ink — used as a whisper, never gaudy. <b>Bright &amp; vibrant</b> in the rose. It celebrates Black women with warmth and dignity, and lets beauty do the talking.</p>
+    </div>
+  </div>
+
+  <div class="slabel"><h2 class="serif">The expecting parent's side</h2><div class="ln"></div><span class="tagm">Discover · Connect · Schedule</span></div>
+
+  <div class="gallery">
+
+    <div class="unit">
+      <div class="phone"><div class="screen dark glitter">
+        <div class="notch"></div>
+        <div class="sbar"><span>9:41</span><div class="r"><span>●●●</span><span>96%</span></div></div>
+        <div class="scroll" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 28px">
+          <div class="mark" style="width:62px;height:62px;margin-bottom:22px"></div>
+          <div class="serif" style="font-size:40px;background:linear-gradient(100deg,#B98E36,#EBD7B0 45%,#FFF7E6 55%,#B98E36);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 7s linear infinite">Mahogany</div>
+          <p class="serif" style="font-style:italic;color:var(--champ);margin:8px 0 0;font-size:16px">Doula care, honored.</p>
+          <p style="color:var(--muted-l);font-size:13.5px;line-height:1.6;margin:18px 0 30px">You don't have to do this alone.<br>Find the doula who feels like home.</p>
+          <div style="width:100%;display:flex;flex-direction:column;gap:12px">
+            <div class="btn btn-gold">Find my doula</div>
+            <div class="btn btn-out">I'm a doula</div>
+          </div>
+          <p class="tiny" style="color:var(--muted-l);margin-top:24px;letter-spacing:.06em">CONTINUOUS · COMPASSIONATE · YOURS</p>
+        </div>
+      </div></div>
+      <div class="cap"><b>Welcome</b><p>The brand moment — gold shimmer on ink. Two doors: parent or doula.</p></div>
+    </div>
+
+    <div class="unit">
+      <div class="phone"><div class="screen light">
+        <div class="notch"></div>
+        <div class="sbar" style="color:#2A201A"><span>9:41</span><div class="r"><span>●●●</span><span>96%</span></div></div>
+        <div class="padx" style="padding-top:6px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-end">
+            <div><p class="tiny muted" style="margin:0;letter-spacing:.12em">FIND YOUR DOULA NEAR</p>
+            <div class="h-serif" style="font-size:22px;color:var(--mahogany)">Jersey City, NJ</div></div>
+            <div class="av a2" style="width:38px;height:38px;font-size:14px">A</div>
+          </div>
+          <div style="margin-top:14px;display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line-l);border-radius:30px;padding:12px 16px">
+            <span style="color:var(--clay)">⌕</span><span class="muted" style="font-size:13.5px">Search name, service, language…</span>
+          </div>
+          <div style="display:flex;gap:8px;overflow:hidden;margin-top:14px">
+            <span class="chip chip-on">All</span><span class="chip chip-l">Birth</span><span class="chip chip-l">Postpartum</span><span class="chip chip-l">VBAC</span><span class="chip chip-l">Holistic</span>
+          </div>
+        </div>
+        <div class="scroll padx" style="margin-top:14px">
+          <div class="card" style="padding:14px;margin-bottom:12px">
+            <div style="display:flex;gap:12px">
+              <div class="av a1" style="width:58px;height:58px;font-size:22px">L</div>
+              <div style="flex:1">
+                <div style="display:flex;justify-content:space-between"><b style="font-size:15px">Lauren M.</b><span class="tiny" style="color:var(--ok);font-weight:600">● Available</span></div>
+                <p class="tiny" style="margin:2px 0;color:var(--mahogany);font-weight:600">Birth &amp; Postpartum Doula · CD(DONA)</p>
+                <p class="tiny muted" style="margin:0"><span class="star">★</span> 5.0 (38) · 1.2 mi · from $1,800</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
+              <span class="chip chip-soft tiny">Holistic</span><span class="chip chip-soft tiny">VBAC</span><span class="chip chip-soft tiny">Belly binding</span>
+            </div>
+          </div>
+          <div class="card" style="padding:14px;margin-bottom:12px">
+            <div style="display:flex;gap:12px">
+              <div class="av a2" style="width:58px;height:58px;font-size:22px">A</div>
+              <div style="flex:1">
+                <div style="display:flex;justify-content:space-between"><b style="font-size:15px">Ayana B.</b><span class="tiny muted">on-call</span></div>
+                <p class="tiny" style="margin:2px 0;color:var(--mahogany);font-weight:600">Birth Doula · CLD (CAPPA)</p>
+                <p class="tiny muted" style="margin:0"><span class="star">★</span> 4.9 (51) · 2.8 mi · from $1,500</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
+              <span class="chip chip-soft tiny">Home birth</span><span class="chip chip-soft tiny">Spanish</span><span class="chip chip-soft tiny">Lactation</span>
+            </div>
+          </div>
+          <div class="card" style="padding:14px">
+            <div style="display:flex;gap:12px">
+              <div class="av a3" style="width:58px;height:58px;font-size:22px">N</div>
+              <div style="flex:1">
+                <div style="display:flex;justify-content:space-between"><b style="font-size:15px">Nia R.</b><span class="tiny" style="color:var(--ok);font-weight:600">● Available</span></div>
+                <p class="tiny" style="margin:2px 0;color:var(--mahogany);font-weight:600">Full-Spectrum Doula · ICBD</p>
+                <p class="tiny muted" style="margin:0"><span class="star">★</span> 5.0 (22) · 3.4 mi · from $1,650</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
+              <span class="chip chip-soft tiny">Bereavement</span><span class="chip chip-soft tiny">Fertility</span>
+            </div>
+          </div>
+        </div>
+      </div></div>
+      <div class="cap"><b>Discover doulas</b><p>Search &amp; filter by service, language, specialty. Credentials and real availability up front.</p></div>
+    </div>
+
+    <div class="unit">
+      <div class="phone"><div class="screen light">
+        <div class="notch"></div>
+        <div class="sbar" style="color:#2A201A"><span>9:41</span><div class="r"><span>●●●</span><span>96%</span></div></div>
+        <div class="scroll">
+          <div style="background:linear-gradient(165deg,#6E3B2C,#A8674E);padding:22px 20px 18px;color:#fff;position:relative" class="glitter">
+            <div style="display:flex;gap:14px;align-items:center">
+              <div class="av a1" style="width:66px;height:66px;font-size:26px;box-shadow:0 0 0 3px rgba(235,215,176,.4)">L</div>
+              <div><div class="h-serif" style="font-size:24px">Lauren M.</div>
+              <p class="tiny" style="margin:3px 0;color:#FBEBD2">Birth &amp; Postpartum Doula · she/her</p>
+              <p class="tiny" style="margin:0;color:#FBEBD2"><span class="star" style="color:#EBD7B0">★</span> 5.0 · 38 families · 7 yrs</p></div>
+            </div>
+          </div>
+          <div class="padx" style="padding-top:16px">
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <span class="badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>CD(DONA)</span>
+              <span class="badge">CPR / First-Aid</span>
+              <span class="badge">Lactation (CLC)</span>
+              <span class="badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Background verified</span>
+            </div>
+            <p style="font-size:13.5px;line-height:1.65;color:#3a2c23;margin:16px 0 4px">I hold space for birth as the sacred, powerful threshold it is. Grounded in evidence and in ritual — affirmations, breath, warm hands — I walk beside you so you feel safe, heard, and never alone. <span style="color:var(--mahogany);font-weight:600">Read more</span></p>
+
+            <p class="tiny muted" style="letter-spacing:.12em;margin:18px 0 8px">OFFERINGS</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <div class="card" style="padding:11px 12px"><b class="tiny">Birth support</b><p class="tiny muted" style="margin:2px 0 0">Labor &amp; delivery</p></div>
+              <div class="card" style="padding:11px 12px"><b class="tiny">Postpartum care</b><p class="tiny muted" style="margin:2px 0 0">In-home, hourly</p></div>
+              <div class="card" style="padding:11px 12px"><b class="tiny">Belly binding</b><p class="tiny muted" style="margin:2px 0 0">Holistic recovery</p></div>
+              <div class="card" style="padding:11px 12px"><b class="tiny">Sacred bath ritual</b><p class="tiny muted" style="margin:2px 0 0">Herbal, intention</p></div>
+            </div>
+
+            <p class="tiny muted" style="letter-spacing:.12em;margin:18px 0 8px">PACKAGES</p>
+            <div class="card" style="padding:13px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
+              <div><b class="tiny">Full Birth Support</b><p class="tiny muted" style="margin:2px 0 0">3 prenatals · on-call · labor · follow-up</p></div>
+              <b style="color:var(--mahogany)">$1,800</b>
+            </div>
+            <div class="card" style="padding:13px;display:flex;justify-content:space-between;align-items:center">
+              <div><b class="tiny">Postpartum Care</b><p class="tiny muted" style="margin:2px 0 0">In-home support</p></div>
+              <b style="color:var(--mahogany)">$40/hr</b>
+            </div>
+
+            <div class="card" style="padding:14px;margin:16px 0 90px;background:rgba(204,126,138,.08);border-color:rgba(204,126,138,.3)">
+              <p class="tiny" style="font-style:italic;font-family:'Fraunces';margin:0;color:#5a3b33">"Lauren made me feel like a queen. I was terrified and she turned it into the most powerful day of my life."</p>
+              <p class="tiny muted" style="margin:8px 0 0">— Imani, first-time mama</p>
+            </div>
+          </div>
+        </div>
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:14px 18px;background:linear-gradient(#fff0,#FBF6EC 28%);display:flex;gap:10px">
+          <div class="btn btn-gold" style="flex:1">Book free consult</div>
+          <div class="btn btn-dark" style="width:54px">✉</div>
+        </div>
+      </div></div>
+      <div class="cap"><b>Doula profile</b><p>Verified credential badges, bio in her own voice, holistic offerings, clear packages, a real testimonial.</p></div>
+    </div>
+
+    <div class="unit">
+      <div class="phone"><div class="screen light">
+        <div class="notch"></div>
+        <div class="sbar" style="color:#2A201A"><span>9:41</span><div class="r"><span>●●●</span><span>96%</span></div></div>
+        <div class="scroll padx" style="padding-top:8px">
+          <p class="tiny muted" style="margin:0;letter-spacing:.12em">WITH LAUREN M.</p>
+          <div class="h-serif" style="font-size:24px;color:var(--mahogany)">Book a free consult</div>
+          <p class="tiny muted" style="margin:6px 0 0">A 15-min meet &amp; greet — video or phone. No commitment, just a vibe check both ways.</p>
+
+          <div class="card" style="padding:16px;margin-top:16px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+              <b class="tiny" style="color:var(--mahogany)">June 2026</b>
+              <span class="muted tiny">‹   ›</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center;font-size:11px">
+              <span class="muted">S</span><span class="muted">M</span><span class="muted">T</span><span class="muted">W</span><span class="muted">T</span><span class="muted">F</span><span class="muted">S</span>
+              <span class="muted">1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
+              <span>8</span><span>9</span><span>10</span>
+              <span style="background:var(--mahogany);color:#fff;border-radius:50%;width:24px;height:24px;line-height:24px;margin:auto">11</span>
+              <span>12</span><span>13</span><span>14</span>
+            </div>
+          </div>
+
+          <p class="tiny muted" style="letter-spacing:.12em;margin:18px 0 10px">WED, JUNE 11 · AVAILABLE TIMES</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div class="chip chip-l" style="justify-content:center">10:00 AM</div>
+            <div class="chip chip-on" style="justify-content:center">11:30 AM</div>
+            <div class="chip chip-l" style="justify-content:center">2:00 PM</div>
+            <div class="chip chip-l" style="justify-content:center">4:30 PM</div>
+          </div>
+
+          <div class="card" style="padding:12px 14px;margin-top:16px;display:flex;gap:10px;align-items:center;background:rgba(110,59,44,.05)">
+            <span>📹</span><div><b class="tiny">Video call</b><p class="tiny muted" style="margin:1px 0 0">Link sent after you confirm</p></div>
+          </div>
+          <div class="btn btn-gold" style="margin-top:16px">Confirm · Wed 11:30 AM</div>
+        </div>
+      </div></div>
+      <div class="cap"><b>Book a consultation</b><p>Mirrors the real first step: the free meet-and-greet. Live availability, then prenatals book the same way.</p></div>
+    </div>
+
+    <div class="unit">
+      <div class="phone"><div class="screen light">
+        <div class="notch"></div>
+        <div class="sbar" style="color:#2A201A"><span>9:41</span><div class="r"><span>●●●</span><span>96%</span></div></div>
+        <div class="padx" style="padding-top:6px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line-l);padding-bottom:12px">
+          <div class="av a1" style="width:40px;height:40px;font-size:16px">L</div>
+          <div><b style="font-size:15px">Lauren M.</b><p class="tiny" style="margin:0;color:var(--ok);font-weight:600">● On-call for you</p></div>
+        </div>
+        <div style="background:rgba(201,162,75,.12);border-bottom:1px solid var(--line-l);padding:8px 20px;text-align:center" class="tiny">
+          <b style="color:#8A6A2A">On-call period active</b> · due in 12 days · reach me anytime, day or night 🤍
+        </div>
+        <div class="scroll padx" style="padding-top:14px;display:flex;flex-direction:column;gap:10px">
+          <div style="align-self:flex-start;max-width:78%;background:#fff;border:1px solid var(--line-l);border-radius:16px 16px 16px 4px;padding:10px 13px;font-size:13px">Hi mama 🤎 How are you feeling after our last visit? Practicing the breathing?</div>
+          <div style="align-self:flex-end;max-width:78%;background:linear-gradient(120deg,#6E3B2C,#A8674E);color:#fff;border-radius:16px 16px 4px 16px;padding:10px 13px;font-size:13px">Yes! The counter-pressure on my back really helped last night 🙏</div>
+          <div style="align-self:flex-start;max-width:78%;background:#fff;border:1px solid var(--line-l);border-radius:16px 16px 16px 4px;padding:10px 13px;font-size:13px">That's it. I added your <b style="color:var(--mahogany)">birth affirmations</b> to your journey tab — listen tonight. I'm right here. 🌙</div>
+          <div style="align-self:flex-start;display:flex;gap:8px;align-items:center;color:var(--clay)" class="tiny">
+            <span style="width:48px;height:24px;background:rgba(110,59,44,.08);border-radius:30px;display:flex;align-items:center;gap:2px;padding:0 8px">▮▮▮▯▮</span> voice memo · 0:14
+          </div>
+        </div>
+        <div class="padx" style="padding-bottom:14px;padding-top:8px;display:flex;gap:8px;align-items:center">
+          <div style="flex:1;background:#fff;border:1px solid var(--line-l);border-radius:30px;padding:11px 15px" class="tiny muted">Message Lauren…</div>
+          <div class="av a3" style="width:40px;height:40px;font-size:18px">↑</div>
+        </div>
+      </div></div>
+      <div class="cap"><b>Messages</b><p>The lifeline. On-call status front-and-center; voice memos &amp; warmth match how doulas actually talk to clients.</p></div>
+    </div>
+
+    <div class="unit">
+      <div class="phone"><div class="screen dark glitter">
+        <div class="notch"></div>
+        <div class="sbar"><span>9:41</span><div class="r"><span>●●●</span><span>96%</span></div></div>
+        <div class="scroll padx" style="padding-top:6px">
+          <p class="tiny" style="margin:0;letter-spacing:.12em;color:var(--muted-l)">YOUR JOURNEY</p>
+          <div class="h-serif" style="font-size:23px;color:var(--cream-2)">Hi Amara 🤎</div>
+
+          <div style="text-align:center;margin:18px 0 6px">
+            <div style="width:150px;height:150px;border-radius:50%;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;
+              background:conic-gradient(var(--gold) 0 70%, rgba(235,215,176,.14) 70% 100%);position:relative">
+              <div style="position:absolute;inset:11px;border-radius:50%;background:#1E160F"></div>
+              <div style="position:relative"><div class="h-serif" style="font-size:34px;color:var(--gold-lt);line-height:1">Wk 28</div>
+              <p class="tiny" style="margin:2px 0 0;color:var(--muted-l)">84 days to go</p></div>
+            </div>
+            <p class="tiny" style="margin:10px 0 0;color:var(--champ)">Third trimester · baby is the size of an eggplant 🍆</p>
+          </div>
+
+          <div style="background:rgba(255,255,255,.05);border:1px solid var(--line-d);border-radius:16px;padding:14px;margin-top:14px;display:flex;gap:12px;align-items:center">
+            <div class="av a1" style="width:42px;height:42px;font-size:16px">L</div>
+            <div style="flex:1"><p class="tiny muted" style="margin:0">NEXT WITH LAUREN</p><b style="font-size:13.5px">Prenatal visit · Jun 11, 11:30 AM</b></div>
+            <span style="color:var(--gold-lt)">›</span>
+          </div>
+
+          <div style="background:rgba(255,255,255,.05);border:1px solid var(--line-d);border-radius:16px;padding:14px;margin-top:10px">
+            <div style="display:flex;justify-content:space-between"><p class="tiny" style="margin:0;color:var(--champ)">Birth preferences</p><span class="tiny" style="color:var(--gold-lt)">60%</span></div>
+            <div style="height:7px;border-radius:6px;background:rgba(235,215,176,.15);margin-top:8px;overflow:hidden"><div style="width:60%;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-lt))"></div></div>
+            <p class="tiny muted" style="margin:8px 0 0">Finish your plan so Lauren can advocate for you.</p>
+          </div>
+
+          <p class="tiny" style="letter-spacing:.12em;margin:18px 0 8px;color:var(--muted-l)">FROM LAUREN · RESOURCES</p>
+          <div style="display:flex;gap:8px;overflow:hidden;padding-bottom:90px">
+            <div style="min-width:96px;background:linear-gradient(150deg,#5C3A5A,#A85B68);border-radius:14px;padding:12px;height:80px;display:flex;align-items:flex-end"><b class="tiny" style="color:#fff">Birth affirmations</b></div>
+            <div style="min-width:96px;background:linear-gradient(150deg,#6E3B2C,#BC6A44);border-radius:14px;padding:12px;height:80px;display:flex;align-items:flex-end"><b class="tiny" style="color:#fff">Comfort techniques</b></div>
+            <div style="min-width:96px;background:linear-gradient(150deg,#8A6A2A,#C9A24B);border-radius:14px;padding:12px;height:80px;display:flex;align-items:flex-end"><b class="tiny" style="color:#2A1C06">Hospital bag list</b></div>
+          </div>
+        </div>
+      </div></div>
+      <div class="cap"><b>My Journey</b><p>The daily home base: due-date countdown, next visit, birth-plan progress, and resources her doula shares.</p></div>
+    </div>
+
+  </div>
+
+  <div class="slabel"><h2 class="serif">Your side — the doula</h2><div class="ln"></div><span class="tagm">Credentials · Roster · Availability</span></div>
+
+  <div class="gallery">
+    <div class="unit">
+      <div class="phone"><div class="screen dark glitter">
+        <div class="notch"></div>
+        <div class="sbar"><span>9:41</span><div class="r"><span>●●●</span><span>96%</span></div></div>
+        <div class="scroll padx" style="padding-top:6px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div><p class="tiny muted" style="margin:0;letter-spacing:.12em">GOOD MORNING</p><div class="h-serif" style="font-size:23px;color:var(--cream-2)">Lauren 🤎</div></div>
+            <div class="av a1" style="width:42px;height:42px;font-size:16px">L</div>
+          </div>
+
+          <div style="background:linear-gradient(120deg,rgba(204,126,138,.22),rgba(201,162,75,.16));border:1px solid var(--line-d);border-radius:16px;padding:14px;margin-top:14px">
+            <p class="tiny" style="margin:0;color:var(--rose)">● ON-CALL NOW</p>
+            <b style="font-size:14px">Amara · due in 12 days</b>
+            <p class="tiny muted" style="margin:4px 0 0">You're her person. 2 unread messages.</p>
+          </div>
+
+          <p class="tiny" style="letter-spacing:.12em;margin:18px 0 8px;color:var(--muted-l)">YOUR FAMILIES</p>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="background:rgba(255,255,255,.05);border:1px solid var(--line-d);border-radius:14px;padding:11px 13px;display:flex;gap:11px;align-items:center">
+              <div class="av a2" style="width:38px;height:38px;font-size:14px">A</div>
+              <div style="flex:1"><b class="tiny">Amara O.</b><p class="tiny muted" style="margin:1px 0 0">Wk 38 · birth package</p></div>
+              <span class="tiny" style="color:var(--rose)">● on-call</span>
+            </div>
+            <div style="background:rgba(255,255,255,.05);border:1px solid var(--line-d);border-radius:14px;padding:11px 13px;display:flex;gap:11px;align-items:center">
+              <div class="av a4" style="width:38px;height:38px;font-size:14px">J</div>
+              <div style="flex:1"><b class="tiny">Jade K.</b><p class="tiny muted" style="margin:1px 0 0">Wk 24 · prenatal Jun 13</p></div>
+              <span class="tiny muted">scheduled</span>
+            </div>
+            <div style="background:rgba(255,255,255,.05);border:1px solid var(--line-d);border-radius:14px;padding:11px 13px;display:flex;gap:11px;align-items:center">
+              <div class="av a3" style="width:38px;height:38px;font-size:14px">T</div>
+              <div style="flex:1"><b class="tiny">Tasha M.</b><p class="tiny muted" style="margin:1px 0 0">Postpartum · wk 2</p></div>
+              <span class="tiny" style="color:var(--ok)">active</span>
+            </div>
+          </div>
+
+          <p class="tiny" style="letter-spacing:.12em;margin:18px 0 8px;color:var(--muted-l)">YOUR CREDENTIALS</p>
+          <div style="background:rgba(255,255,255,.05);border:1px solid var(--line-d);border-radius:16px;padding:14px;margin-bottom:90px">
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+              <span class="badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>CD(DONA)</span>
+              <span class="badge">CPR</span>
+              <span class="badge">CLC</span>
+            </div>
+            <div style="border:1px dashed rgba(235,215,176,.35);border-radius:12px;padding:12px;text-align:center;color:var(--champ)" class="tiny">
+              ＋ Upload a credential or certificate<br><span class="muted">PDF or photo · we verify &amp; badge it</span>
+            </div>
+          </div>
+        </div>
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:11px 18px;background:linear-gradient(#1A130E00,#1A130E 35%);display:flex;justify-content:space-around;color:var(--muted-l);font-size:10px">
+          <span style="color:var(--gold-lt)">◉ Home</span><span>✉ Messages</span><span>◷ Calendar</span><span>◐ Profile</span>
+        </div>
+      </div></div>
+      <div class="cap"><b>Doula dashboard</b><p>Your command center: who's on-call, your family roster with due dates, and one-tap credential upload that becomes a verified badge.</p></div>
+    </div>
+
+    <div class="unit" style="width:300px">
+      <div style="height:628px;border:1px solid var(--line-d);border-radius:30px;padding:26px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));display:flex;flex-direction:column">
+        <div class="h-serif" style="font-size:22px;color:var(--cream-2)">Why it's built this way</div>
+        <p style="font-size:13px;line-height:1.7;color:var(--muted-l);margin:14px 0 0">Every screen maps to how doulas and families <b style="color:var(--champ)">actually work together</b>:</p>
+        <ul style="font-size:12.5px;line-height:1.7;color:var(--muted-l);padding-left:18px;margin:8px 0">
+          <li><b style="color:var(--champ)">Discovery</b> → search + the free meet &amp; greet</li>
+          <li><b style="color:var(--champ)">Qualifications</b> → verified credential badges (DONA, CAPPA, CPR, lactation)</li>
+          <li><b style="color:var(--champ)">Prenatal visits</b> → scheduling + journey tracker</li>
+          <li><b style="color:var(--champ)">On-call period</b> → status banner + 24/7 messaging</li>
+          <li><b style="color:var(--champ)">Postpartum</b> → resources + follow-up</li>
+          <li><b style="color:var(--champ)">Holistic care</b> → first-class offerings, not afterthoughts</li>
+        </ul>
+        <p style="font-size:12.5px;line-height:1.7;color:var(--muted-l);margin-top:auto">Built to honor that doulas spend <b style="color:var(--gold-lt)">~76 hours</b> with each family — this app is the connective tissue for that whole relationship.</p>
+      </div>
+      <div class="cap"><b>The thinking</b><p>Grounded in how doulas and their clients really work together.</p></div>
+    </div>
+  </div>
+
+  <!-- DECISION -->
+  <div class="decide">
+    <h3 class="serif">Lauren, your call 🤎</h3>
+    <p class="lead">This is a first look — nothing's locked. Two things only you should decide. Read them, then <b>text Chris your picks.</b></p>
+
+    <div class="qlabel">1 · The name (the mockup uses "Mahogany" as a placeholder)</div>
+    <div class="opt"><div class="k">A</div><div><b>Mahogany</b><p>Warm, rich, deep-brown elegance; quietly celebrates Black beauty; gorgeous with gold-on-black.</p></div></div>
+    <div class="opt"><div class="k">B</div><div><b>Sojourn</b><p>The journey of it — with a quiet nod to Sojourner Truth.</p></div></div>
+    <div class="opt"><div class="k">C</div><div><b>Tend</b><p>Plain, grounded, exactly what a doula does.</p></div></div>
+    <div class="opt"><div class="k">D</div><div><b>Mamatoto</b><p>Swahili for "mother-baby" — an authentic birth-world word.</p></div></div>
+
+    <div class="qlabel">2 · One question about how big it is</div>
+    <div class="opt"><div class="k">①</div><div><b>A marketplace</b> — many doulas can join, and parents browse several (you'd be the first one listed).<p>Bigger vision, room to grow into a real platform for doulas everywhere.</p></div></div>
+    <div class="opt"><div class="k">②</div><div><b>Just you</b> — your own private branded portal for your clients only.<p>Simpler, more intimate, 100% yours.</p></div></div>
+
+    <div class="cta">
+      <div class="big serif">Text Chris your two picks 💛</div>
+      <div class="ex">like: &nbsp;<b>"A + marketplace"</b>&nbsp; or &nbsp;<b>"D + just me"</b></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="clock"><i class="hh"></i><i class="mm"></i></div>
+    <p>Built with love by <b>Chris</b> &amp; <b>The 730 Company</b> · a first-look concept for Lauren · 2026<br>
+    <span style="color:var(--muted-l)">The brown avatars are placeholders — real photos of mamas &amp; doulas go in later.</span></p>
+  </div>
+
+</div>
+</body>
+</html>
